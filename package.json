@@ -1,0 +1,20 @@
+{
+  "name": "fm-todo",
+  "version": "1.0.0",
+  "description": "https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW",
+  "main": "./src/index.html",
+  "scripts": {
+    "start": "parcel ./src/index.html --open --no-cache",
+    "build": "parcel build ./src/index.html"
+  },
+  "keywords": [
+    "todo app",
+    "frontendmentor"
+  ],
+  "author": "https://github.com/felipeog",
+  "license": "ISC",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "preact": "^10.5.12"
+  }
+}
