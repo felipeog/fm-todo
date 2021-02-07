@@ -1,5 +1,9 @@
 import { h } from 'preact'
 
-const App = () => <h1>App</h1>
+import * as style from './App.module.scss'
+
+const App = () => {
+  return <div className={style.App}></div>
+}
 
 export default App

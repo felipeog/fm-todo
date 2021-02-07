@@ -1,0 +1,12 @@
+html[data-theme='light'] {
+  --bg-color: lightblue;
+  --text-color: darkblue;
+}
+
+html[data-theme='dark'] {
+  --bg-color: darkblue;
+  --text-color: lightblue;
+}
+
+$bg-color: var(--bg-color);
+$text-color: var(--text-color);

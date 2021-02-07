@@ -4,8 +4,8 @@
   "description": "https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW",
   "main": "./src/index.html",
   "scripts": {
-    "start": "parcel ./src/index.html --open --no-cache",
-    "build": "parcel build ./src/index.html"
+    "start": "parcel './src/index.html' --open --no-cache",
+    "build": "parcel build './src/index.html'"
   },
   "keywords": [
     "todo app",
@@ -14,7 +14,12 @@
   "author": "https://github.com/felipeog",
   "license": "ISC",
   "dependencies": {
-    "parcel-bundler": "^1.12.4",
+    "parcel": "^2.0.0-nightly.574",
     "preact": "^10.5.12"
+  },
+  "devDependencies": {
+    "postcss-modules": "^4.0.0",
+    "postcss": "^8.2.5",
+    "sass": "^1.32.6"
   }
 }
