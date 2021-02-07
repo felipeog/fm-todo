@@ -2,7 +2,7 @@
   "name": "fm-todo",
   "version": "1.0.0",
   "description": "https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW",
-  "main": "./src/index.html",
+  "main": "dist/index.html",
   "scripts": {
     "start": "parcel './src/index.html' --open --no-cache",
     "build": "parcel build './src/index.html'"

@@ -2,7 +2,7 @@
   "modules": true,
   "plugins": {
     "postcss-modules": {
-      "generateScopedName": "_[name]__[local]"
+      "generateScopedName": "_[name]__[local]_[hash:base64:5]"
     }
   }
 }
