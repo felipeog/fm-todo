@@ -1,0 +1,16 @@
+@use '../../assets/scss/variables' as v;
+
+.root {
+  background-color: v.$list-bg-color;
+  border-radius: 0.2rem;
+
+  .item {
+    padding: 1rem;
+    background-color: v.$item-bg-color;
+    margin-bottom: 0.1rem;
+  }
+
+  .item:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import React from 'react'
 import { useState } from 'preact/hooks'
 
 import Sun from 'url:../../assets/img/icon-sun.svg'
