@@ -52,7 +52,7 @@
     }
   }
 
-  &:checked {
+  &.checked {
     &:before {
       transition: v.$transition-duration;
       width: calc(#{$width} + #{$border-width});
