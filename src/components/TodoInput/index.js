@@ -7,11 +7,7 @@ const TodoInput = ({ setTodos }) => {
   const [isChecked, setIsChecked] = useState(false)
   const [todoTitle, setTodoTitle] = useState('')
 
-  const toggleIsChecked = () =>
-    setIsChecked((isChecked) => {
-      console.log(!isChecked)
-      return !isChecked
-    })
+  const toggleIsChecked = () => setIsChecked((isChecked) => !isChecked)
 
   const handleTitleChange = (event) => setTodoTitle(event.target.value)
 
