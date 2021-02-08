@@ -16,9 +16,21 @@ html[data-theme='dark'] {
   --text-color: hsl(234, 39%, 85%);
   --list-bg-color: hsl(237, 14%, 26%);
   --item-bg-color: hsl(235, 24%, 19%);
+  --item-border-color: hsl(237, 14%, 26%);
+  --checkbox-bg-inactive-color: hsl(235, 24%, 19%);
+  --checkbox-border-inactive-color: hsl(237, 14%, 26%);
 }
 
+$white: #fff;
 $bg-color: var(--bg-color);
 $text-color: var(--text-color);
 $list-bg-color: var(--list-bg-color);
 $item-bg-color: var(--item-bg-color);
+$item-border-color: var(--item-border-color);
+$checkbox-bg-inactive-color: var(--checkbox-bg-inactive-color);
+$checkbox-border-inactive-color: var(--checkbox-border-inactive-color);
+$checkbox-gradient: linear-gradient(135deg, #6ac6ff, #ae7ef4);
+$checkbox-gradient-hover: linear-gradient(135deg, #8ed4ff, #c198ff);
+
+$border-radius: 0.2rem;
+$transition-duration: 200ms;

@@ -1,0 +1,83 @@
+@use '../../assets/scss/variables' as v;
+
+.root {
+  $width: 1.2rem;
+  $border-width: 0.1rem;
+
+  padding: 0.4rem;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+
+  &:active,
+  &:focus {
+    &:before {
+      outline-color: rgb(0, 95, 204);
+      outline-style: auto;
+      outline-width: 1px;
+    }
+  }
+
+  &:before,
+  &:after {
+    transition: v.$transition-duration;
+    content: '';
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:before {
+    width: $width;
+    height: $width;
+    background-color: v.$checkbox-bg-inactive-color;
+    border: $border-width solid v.$checkbox-border-inactive-color;
+  }
+
+  &:hover {
+    &:before {
+      width: calc(#{$width} + #{$border-width});
+      height: calc(#{$width} + #{$border-width});
+      background: v.$checkbox-gradient;
+      border: none;
+    }
+
+    &:after {
+      width: $width;
+      height: $width;
+      background-color: v.$checkbox-bg-inactive-color;
+    }
+  }
+
+  &:checked {
+    &:before {
+      width: calc(#{$width} + #{$border-width});
+      height: calc(#{$width} + #{$border-width});
+      background: v.$checkbox-gradient;
+      border: none;
+    }
+
+    &:after {
+      width: 0.38rem;
+      height: 0.14rem;
+      border-bottom: 0.16rem solid v.$white;
+      border-left: 0.16rem solid v.$white;
+      border-radius: 0;
+      transform: translate(-50%, calc(-50% - 0.04rem)) rotate(-45deg);
+    }
+
+    &:hover {
+      &:before {
+        background: v.$checkbox-gradient-hover;
+      }
+
+      &:after {
+        background-color: transparent;
+      }
+    }
+  }
+}
