@@ -1,22 +1,9 @@
-import React from 'react'
-import { useCallback, useState } from 'preact/hooks'
+import React, { useCallback } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 import * as style from './index.module.scss'
 
-const initialTodos = [
-  {
-    title: 'title 0',
-    id: 'todo-0',
-  },
-  {
-    title: 'title 1',
-    id: 'todo-1',
-  },
-]
-
-const TodoList = () => {
-  const [todos, setTodos] = useState(initialTodos)
+const TodoList = ({ todos, setTodos }) => {
   const onDragEnd = useCallback(
     (result) => {
       if (!result.destination) return

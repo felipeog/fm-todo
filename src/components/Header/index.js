@@ -10,7 +10,7 @@ const themes = {
   light: 'light',
 }
 
-const AppHeader = () => {
+const Header = () => {
   const [theme, setTheme] = useState(themes.dark)
 
   const toggleTheme = () => {
@@ -35,4 +35,4 @@ const AppHeader = () => {
   )
 }
 
-export default AppHeader
+export default Header
