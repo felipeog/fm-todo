@@ -7,7 +7,11 @@ const TodoInput = ({ setTodos }) => {
   const [isChecked, setIsChecked] = useState(false)
   const [todoTitle, setTodoTitle] = useState('')
 
-  const toggleIsChecked = () => setIsChecked((isChecked) => !isChecked)
+  const toggleIsChecked = () =>
+    setIsChecked((isChecked) => {
+      console.log(!isChecked)
+      return !isChecked
+    })
 
   const handleTitleChange = (event) => setTodoTitle(event.target.value)
 
@@ -31,7 +35,7 @@ const TodoInput = ({ setTodos }) => {
 
   return (
     <form className={`TodoInput ${style.root}`} onSubmit={addTodo}>
-      <Checkbox checked={isChecked} onClick={toggleIsChecked} />
+      <Checkbox isChecked={isChecked} onClick={toggleIsChecked} />
       <input
         className={style.input}
         type="text"
