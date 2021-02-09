@@ -8,12 +8,9 @@ const Actions = ({
   filterOptions,
   setFilter,
   clearCompleted,
-}) => (
-  <footer className={`Actions ${style.root}`}>
-    <div className={style.itemsLeft}>
-      {itemsLeft} item{itemsLeft !== 1 ? 's' : ''} left
-    </div>
-    <ul className={style.actionsList}>
+}) => {
+  const renderActionList = (className) => (
+    <ul className={className}>
       {filterOptions.map((filter) => (
         <li className={style.actionItem} key={filter.value}>
           <button
@@ -27,10 +24,27 @@ const Actions = ({
         </li>
       ))}
     </ul>
-    <button className={style.clearCompleted} onClick={clearCompleted}>
-      Clear Completed
-    </button>
-  </footer>
-)
+  )
+
+  return (
+    <footer className={`Actions ${style.root}`}>
+      <div className={style.top}>
+        <div className={style.itemsLeft}>
+          {itemsLeft} item{itemsLeft !== 1 ? 's' : ''} left
+        </div>
+
+        {renderActionList(style.actionsListDesktop)}
+
+        <button className={style.clearCompleted} onClick={clearCompleted}>
+          Clear Completed
+        </button>
+      </div>
+
+      <div className={style.bottom}>
+        {renderActionList(style.actionsListMobile)}
+      </div>
+    </footer>
+  )
+}
 
 export default Actions

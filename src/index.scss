@@ -1,6 +1,12 @@
 @use './assets/scss/reset';
 @use './assets/scss/variables' as v;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   background-color: v.$bg-color;
   color: v.$text-color;
@@ -28,4 +34,10 @@ button {
   margin: 0;
   font-family: v.$font-family;
   font-size: 1rem;
+}
+
+@media screen and (max-width: 899px) {
+  body {
+    background-size: 100% 16rem;
+  }
 }

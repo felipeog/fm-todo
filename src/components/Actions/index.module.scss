@@ -1,14 +1,26 @@
 @use '../../assets/scss/variables' as v;
 
 .root {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: v.$item-bg-color;
-  border-bottom-left-radius: v.$border-radius;
-  border-bottom-right-radius: v.$border-radius;
-  border-top: 0.1rem solid v.$item-border-color;
+  .top,
+  .bottom {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: v.$item-bg-color;
+  }
+
+  .top {
+    justify-content: space-between;
+    border-bottom-left-radius: v.$border-radius;
+    border-bottom-right-radius: v.$border-radius;
+    border-top: 0.1rem solid v.$item-border-color;
+  }
+
+  .bottom {
+    justify-content: center;
+    margin-top: 1.4rem;
+    border-radius: v.$border-radius;
+  }
 
   .itemsLeft,
   .actionButton,
@@ -26,8 +38,13 @@
     }
   }
 
-  .actionsList {
+  .actionsListDesktop,
+  .actionsListMobile {
     display: flex;
+  }
+
+  .bottom {
+    display: none;
   }
 
   .actionItem {
@@ -40,5 +57,17 @@
 
   .actionButton.active {
     color: v.$action-text-active-color;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .root {
+    .actionsListDesktop {
+      display: none;
+    }
+
+    .bottom {
+      display: flex;
+    }
   }
 }
