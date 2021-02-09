@@ -24,6 +24,40 @@ const App = () => {
     if (localStorage.getItem(LSKey)) {
       const todos = JSON.parse(localStorage.getItem(LSKey))
       setTodos(todos)
+    } else {
+      const todos = [
+        {
+          title: 'Complete online JavaScript course',
+          checked: true,
+          id: 'draggable-725010',
+        },
+        {
+          title: 'Jog around the park 3x',
+          checked: false,
+          id: 'draggable-916603',
+        },
+        {
+          title: '10 minutes meditation',
+          checked: false,
+          id: 'draggable-145757',
+        },
+        {
+          title: 'Read for 1 hour',
+          checked: false,
+          id: 'draggable-221124',
+        },
+        {
+          title: 'Pick up groceries',
+          checked: false,
+          id: 'draggable-440755',
+        },
+        {
+          title: 'Complete Todo App on Frontend Mentor',
+          checked: false,
+          id: 'draggable-738189',
+        },
+      ]
+      setTodos(todos)
     }
   }, [])
 
