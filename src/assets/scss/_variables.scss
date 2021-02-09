@@ -10,8 +10,14 @@ $very-dark-grayish-blue: hsl(237, 14%, 26%);
 $very-dark-grayish-blue-hover: hsl(233, 14%, 35%);
 
 html[data-theme='light'] {
-  --bg-color: hsl(234, 39%, 85%);
+  --bg-color: hsl(236, 33%, 92%);
   --text-color: hsl(235, 21%, 11%);
+  --list-bg-color: hsl(0, 0%, 98%);
+  --item-bg-color: hsl(0, 0%, 98%);
+  --item-border-color: hsl(234, 39%, 85%);
+  --checkbox-bg-inactive-color: hsl(0, 0%, 98%);
+  --checkbox-border-inactive-color: hsl(234, 39%, 85%);
+  --input-placeholder-color: hsl(234, 11%, 52%);
 }
 
 html[data-theme='dark'] {

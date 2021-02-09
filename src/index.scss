@@ -6,10 +6,19 @@ html {
   color: v.$text-color;
   font-family: v.$font-family;
   font-size: 18px;
+
+  &[data-theme='light'] body {
+    background-image: url('./assets/img/bg-desktop-light.jpg');
+  }
+
+  &[data-theme='dark'] body {
+    background-image: url('./assets/img/bg-desktop-dark.jpg');
+  }
 }
 
-em {
-  font-style: italic;
+body {
+  background-repeat: no-repeat;
+  background-size: 100% 18rem;
 }
 
 button {
