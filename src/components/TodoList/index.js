@@ -9,12 +9,20 @@ const TodoList = ({ filteredTodos, setTodos, isDragDisabled }) => {
   if (!filteredTodos.length) return <p className={style.empty}>Empty list</p>
 
   const onDragEnd = useCallback((result) => {
-    if (!result.destination) return
+    const { destination, source } = result
+
+    if (
+      !destination ||
+      (destination.droppableId === source.droppableId &&
+        destination.index === source.index)
+    ) {
+      return
+    }
 
     setTodos((todos) => {
       const items = Array.from(todos)
-      const [reorderedItem] = items.splice(result.source.index, 1)
-      items.splice(result.destination.index, 0, reorderedItem)
+      const [reorderedItem] = items.splice(source.index, 1)
+      items.splice(destination.index, 0, reorderedItem)
 
       return items
     })
