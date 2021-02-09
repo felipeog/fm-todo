@@ -6,7 +6,7 @@
 
   .removeTodo {
     cursor: pointer;
-    visibility: hidden;
+    opacity: 0;
   }
 
   .item {
@@ -17,8 +17,12 @@
     background-color: v.$item-bg-color;
     border-top: 0.1rem solid v.$item-border-color;
 
-    &:hover .removeTodo {
-      visibility: visible;
+    &:hover,
+    &:focus,
+    &:focus-within {
+      .removeTodo {
+        opacity: 1;
+      }
     }
   }
 

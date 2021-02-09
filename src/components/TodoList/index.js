@@ -85,12 +85,12 @@ const TodoList = ({ filteredTodos, setTodos, isDragDisabled }) => {
                       {title}
                     </span>
 
-                    <div
+                    <button
                       className={style.removeTodo}
                       onClick={(event) => removeTodo(event, id)}
                     >
                       <img src={Cross} alt="Remove todo" />
-                    </div>
+                    </button>
                   </li>
                 )}
               </Draggable>
