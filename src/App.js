@@ -37,7 +37,7 @@ const App = () => {
         break
 
       default:
-        throw new Error('Invalid filter')
+        throw new Error('App @ useEffect >>>>> Invalid filter value')
     }
   }, [filter, todos])
 
@@ -46,13 +46,18 @@ const App = () => {
   }
 
   const itemsLeft = todos.filter(({ checked }) => !checked).length
+  const isReorderDisabled = filter.value !== 'all'
 
   return (
     <main className={`App ${style.root}`}>
       <div className={style.container}>
         <Header />
         <TodoInput setTodos={setTodos} />
-        <TodoList filteredTodos={filteredTodos} setTodos={setTodos} />
+        <TodoList
+          filteredTodos={filteredTodos}
+          setTodos={setTodos}
+          isDragDisabled={isReorderDisabled}
+        />
         <Actions
           itemsLeft={itemsLeft}
           activeFilter={filter}
@@ -61,15 +66,9 @@ const App = () => {
           clearCompleted={clearCompleted}
         />
 
-        <p className={style.message}>
-          {filter.value === 'all' ? (
-            <>Drag and drop to reorder list</>
-          ) : (
-            <>
-              Go back to <em>All</em> to reorder list
-            </>
-          )}
-        </p>
+        {!isReorderDisabled && (
+          <p className={style.message}>Drag and drop to reorder list</p>
+        )}
       </div>
     </main>
   )

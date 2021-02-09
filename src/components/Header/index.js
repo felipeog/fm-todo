@@ -29,7 +29,11 @@ const Header = () => {
       <h1 className={style.title}>Todo</h1>
 
       <button className={style.button} onClick={toggleTheme}>
-        {theme === themes.dark ? <img src={Sun} /> : <img src={Moon} />}
+        {theme === themes.dark ? (
+          <img src={Sun} alt="Light theme" />
+        ) : (
+          <img src={Moon} alt="Dark theme" />
+        )}
       </button>
     </header>
   )

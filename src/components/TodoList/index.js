@@ -2,9 +2,10 @@ import React, { useCallback } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 import Checkbox from '../Checkbox'
+import Cross from 'url:../../assets/img/icon-cross.svg'
 import * as style from './index.module.scss'
 
-const TodoList = ({ filteredTodos, setTodos }) => {
+const TodoList = ({ filteredTodos, setTodos, isDragDisabled }) => {
   if (!filteredTodos.length) return <p className={style.empty}>Empty list</p>
 
   const onDragEnd = useCallback((result) => {
@@ -36,6 +37,18 @@ const TodoList = ({ filteredTodos, setTodos }) => {
     })
   }
 
+  const removeTodo = (event, id) => {
+    event.preventDefault()
+
+    setTodos((todos) => {
+      const items = Array.from(todos)
+      const itemIndex = todos.findIndex((todo) => todo.id === id)
+      items.splice(itemIndex, 1)
+
+      return items
+    })
+  }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable-1">
@@ -46,7 +59,12 @@ const TodoList = ({ filteredTodos, setTodos }) => {
             {...provided.droppableProps}
           >
             {filteredTodos.map(({ title, id, checked }, index) => (
-              <Draggable key={id} draggableId={id} index={index}>
+              <Draggable
+                key={id}
+                draggableId={id}
+                index={index}
+                isDragDisabled={isDragDisabled}
+              >
                 {(provided) => (
                   <li
                     className={style.item}
@@ -58,7 +76,21 @@ const TodoList = ({ filteredTodos, setTodos }) => {
                       isChecked={checked}
                       onClick={(event) => toggleTodoCheck(event, id)}
                     />
-                    <span className={style.title}>{title}</span>
+
+                    <span
+                      className={`${style.title} ${
+                        checked ? style.checked : ''
+                      }`}
+                    >
+                      {title}
+                    </span>
+
+                    <div
+                      className={style.removeTodo}
+                      onClick={(event) => removeTodo(event, id)}
+                    >
+                      <img src={Cross} alt="Remove todo" />
+                    </div>
                   </li>
                 )}
               </Draggable>
