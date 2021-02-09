@@ -51,7 +51,7 @@ $checkbox-gradient-hover: linear-gradient(
 );
 $input-placeholder-color: var(--input-placeholder-color);
 $action-text-color: var(--input-placeholder-color);
-$action-text-active-color: hsl(220, 98%, 61%);
+$action-text-active-color: $bright-blue;
 
 $font-family: 'Josefin Sans', sans-serif;
 
