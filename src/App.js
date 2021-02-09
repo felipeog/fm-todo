@@ -6,6 +6,7 @@ import TodoList from './components/TodoList'
 import Actions from './components/Actions'
 import * as style from './App.module.scss'
 
+const LSKey = 'fm-todo/items'
 const filterOptions = [
   { label: 'All', value: 'all' },
   { label: 'Active', value: 'active' },
@@ -19,10 +20,18 @@ const App = () => {
   const [filter, setFilter] = useState(defaultFilter)
 
   useEffect(() => {
-    // check localstorage
+    // check for items in local storage
+    if (localStorage.getItem(LSKey)) {
+      const todos = JSON.parse(localStorage.getItem(LSKey))
+      setTodos(todos)
+    }
   }, [])
 
   useEffect(() => {
+    // save todos in local storage
+    localStorage.setItem(LSKey, JSON.stringify(todos))
+
+    // filter todos
     switch (filter.value) {
       case 'all':
         setFilteredTodos(todos)
