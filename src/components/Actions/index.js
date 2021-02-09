@@ -10,7 +10,9 @@ const Actions = ({
   clearCompleted,
 }) => (
   <footer className={`Actions ${style.root}`}>
-    <div className={style.itemsLeft}>{itemsLeft} items left</div>
+    <div className={style.itemsLeft}>
+      {itemsLeft} item{itemsLeft !== 1 ? 's' : ''} left
+    </div>
     <ul className={style.actionsList}>
       {filterOptions.map((filter) => (
         <li className={style.actionItem} key={filter.value}>
