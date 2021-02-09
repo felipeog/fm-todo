@@ -4,33 +4,36 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Checkbox from '../Checkbox'
 import * as style from './index.module.scss'
 
-const TodoList = ({ todos, setTodos }) => {
-  const onDragEnd = useCallback(
-    (result) => {
-      if (!result.destination) return
+const TodoList = ({ filteredTodos, setTodos }) => {
+  if (!filteredTodos.length) return <p className={style.empty}>Empty list</p>
 
+  const onDragEnd = useCallback((result) => {
+    if (!result.destination) return
+
+    setTodos((todos) => {
       const items = Array.from(todos)
       const [reorderedItem] = items.splice(result.source.index, 1)
       items.splice(result.destination.index, 0, reorderedItem)
 
-      setTodos(items)
-    },
-    [todos],
-  )
+      return items
+    })
+  }, [])
 
   const toggleTodoCheck = (event, id) => {
     event.preventDefault()
 
-    const items = Array.from(todos)
-    const itemIndex = todos.findIndex((todo) => todo.id === id)
-    const [itemToToggle] = items.splice(itemIndex, 1)
-    const toggledItem = {
-      ...itemToToggle,
-      checked: !itemToToggle.checked,
-    }
-    items.splice(itemIndex, 0, toggledItem)
+    setTodos((todos) => {
+      const items = Array.from(todos)
+      const itemIndex = todos.findIndex((todo) => todo.id === id)
+      const [itemToToggle] = items.splice(itemIndex, 1)
+      const toggledItem = {
+        ...itemToToggle,
+        checked: !itemToToggle.checked,
+      }
+      items.splice(itemIndex, 0, toggledItem)
 
-    setTodos(items)
+      return items
+    })
   }
 
   return (
@@ -42,7 +45,7 @@ const TodoList = ({ todos, setTodos }) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {todos.map(({ title, id, checked }, index) => (
+            {filteredTodos.map(({ title, id, checked }, index) => (
               <Draggable key={id} draggableId={id} index={index}>
                 {(provided) => (
                   <li

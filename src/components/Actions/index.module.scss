@@ -1,0 +1,40 @@
+@use '../../assets/scss/variables' as v;
+
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: v.$item-bg-color;
+  border-bottom-left-radius: v.$border-radius;
+  border-bottom-right-radius: v.$border-radius;
+  border-top: 0.1rem solid v.$item-border-color;
+
+  .itemsLeft,
+  .actionButton,
+  .clearCompleted {
+    font-size: 0.8rem;
+    color: v.$action-text-color;
+  }
+
+  .actionButton,
+  .clearCompleted {
+    cursor: pointer;
+  }
+
+  .actionsList {
+    display: flex;
+  }
+
+  .actionItem {
+    font-weight: bold;
+
+    + .actionItem {
+      margin-left: 0.6rem;
+    }
+  }
+
+  .actionButton.active {
+    color: v.$action-text-active-color;
+  }
+}

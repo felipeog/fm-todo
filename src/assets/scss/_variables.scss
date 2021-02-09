@@ -1,10 +1,13 @@
-// Very Dark Blue: hsl(235, 21%, 11%)
-// Very Dark Desaturated Blue: hsl(235, 24%, 19%)
-// Light Grayish Blue: hsl(234, 39%, 85%)
-// Light Grayish Blue (hover): hsl(236, 33%, 92%)
-// Dark Grayish Blue: hsl(234, 11%, 52%)
-// Very Dark Grayish Blue: hsl(233, 14%, 35%)
-// Very Dark Grayish Blue: hsl(237, 14%, 26%)
+$bright-blue: hsl(220, 98%, 61%);
+$very-light-gray: hsl(0, 0%, 98%);
+$very-light-grayish-blue: hsl(236, 33%, 92%);
+$very-dark-blue: hsl(235, 21%, 11%);
+$very-dark-desaturated-blue: hsl(235, 24%, 19%);
+$light-grayish-blue: hsl(234, 39%, 85%);
+$light-grayish-blue-hover: hsl(236, 33%, 92%);
+$dark-grayish-blue: hsl(234, 11%, 52%);
+$very-dark-grayish-blue: hsl(237, 14%, 26%);
+$very-dark-grayish-blue-hover: hsl(233, 14%, 35%);
 
 html[data-theme='light'] {
   --bg-color: hsl(234, 39%, 85%);
@@ -30,9 +33,19 @@ $item-bg-color: var(--item-bg-color);
 $item-border-color: var(--item-border-color);
 $checkbox-bg-inactive-color: var(--checkbox-bg-inactive-color);
 $checkbox-border-inactive-color: var(--checkbox-border-inactive-color);
-$checkbox-gradient: linear-gradient(135deg, #6ac6ff, #ae7ef4);
-$checkbox-gradient-hover: linear-gradient(135deg, #8ed4ff, #c198ff);
+$checkbox-gradient: linear-gradient(
+  135deg,
+  hsl(192, 100%, 67%),
+  hsl(280, 87%, 65%)
+);
+$checkbox-gradient-hover: linear-gradient(
+  135deg,
+  hsl(192, 100%, 80%),
+  hsl(280, 100%, 77%)
+);
 $input-placeholder-color: var(--input-placeholder-color);
+$action-text-color: var(--input-placeholder-color);
+$action-text-active-color: hsl(220, 98%, 61%);
 
 $font-family: 'Josefin Sans', sans-serif;
 

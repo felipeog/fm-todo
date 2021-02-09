@@ -7,3 +7,16 @@ html {
   font-family: v.$font-family;
   font-size: 18px;
 }
+
+em {
+  font-style: italic;
+}
+
+button {
+  border: none;
+  background-color: unset;
+  padding: 0;
+  margin: 0;
+  font-family: v.$font-family;
+  font-size: 1rem;
+}

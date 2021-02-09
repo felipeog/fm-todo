@@ -17,6 +17,14 @@
   }
 
   .title {
-    margin-left: 1rem;
+    margin-left: 1.4rem;
   }
+}
+
+.empty {
+  padding: 1rem;
+  text-align: center;
+  background-color: v.$item-bg-color;
+  border-top-left-radius: v.$border-radius;
+  border-top-right-radius: v.$border-radius;
 }
