@@ -32,6 +32,7 @@
   .actionButton,
   .clearCompleted {
     cursor: pointer;
+    transition: v.$transition-duration;
 
     &:hover {
       color: v.$text-color;

@@ -47,11 +47,6 @@ $checkbox-gradient: linear-gradient(
   hsl(192, 100%, 67%),
   hsl(280, 87%, 65%)
 );
-$checkbox-gradient-hover: linear-gradient(
-  135deg,
-  hsl(192, 100%, 80%),
-  hsl(280, 100%, 77%)
-);
 $input-placeholder-color: var(--input-placeholder-color);
 $action-text-color: var(--input-placeholder-color);
 $action-text-active-color: $bright-blue;

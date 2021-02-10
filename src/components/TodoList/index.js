@@ -117,7 +117,11 @@ const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
                       className={style.removeTodo}
                       onClick={(event) => removeTodo(event, id)}
                     >
-                      <img src={Cross} alt="Remove todo" />
+                      <img
+                        className={style.removeTodoIcon}
+                        src={Cross}
+                        alt="Remove todo"
+                      />
                     </button>
                   </li>
                 )}

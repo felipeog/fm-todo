@@ -43,6 +43,7 @@
       height: calc(#{$width} + #{$border-width});
       background: v.$checkbox-gradient;
       border: none;
+      transition: v.$transition-duration;
     }
 
     &:after {
@@ -54,31 +55,26 @@
 
   &.checked {
     &:before {
-      transition: v.$transition-duration;
       width: calc(#{$width} + #{$border-width});
       height: calc(#{$width} + #{$border-width});
       background: v.$checkbox-gradient;
       border: none;
+      transition: v.$transition-duration;
     }
 
     &:after {
       transition: v.$transition-duration;
-      width: 0.38rem;
-      height: 0.14rem;
+      width: 0.4rem;
+      height: 0.2rem;
       border-bottom: 0.16rem solid v.$white;
       border-left: 0.16rem solid v.$white;
       border-radius: 0;
       transform: translate(-50%, calc(-50% - 0.04rem)) rotate(-45deg);
+      background-color: transparent;
     }
 
-    &:hover {
-      &:before {
-        background: v.$checkbox-gradient-hover;
-      }
-
-      &:after {
-        background-color: transparent;
-      }
+    &:hover:before {
+      filter: brightness(120%);
     }
   }
 }
