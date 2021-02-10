@@ -93,38 +93,42 @@ const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
                 index={index}
                 isDragDisabled={isDragDisabled}
               >
-                {(provided) => (
-                  <li
-                    className={style.item}
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
-                    <Checkbox
-                      isChecked={checked}
-                      onClick={(event) => toggleTodoCheck(event, id)}
-                    />
-
-                    <span
-                      className={`${style.title} ${
-                        checked ? style.checked : ''
-                      }`}
+                {(provided) => {
+                  console.log({ provided })
+                  return (
+                    <li
+                      className={style.item}
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      role=""
                     >
-                      {title}
-                    </span>
-
-                    <button
-                      className={style.removeTodo}
-                      onClick={(event) => removeTodo(event, id)}
-                    >
-                      <img
-                        className={style.removeTodoIcon}
-                        src={Cross}
-                        alt="Remove todo"
+                      <Checkbox
+                        isChecked={checked}
+                        onClick={(event) => toggleTodoCheck(event, id)}
                       />
-                    </button>
-                  </li>
-                )}
+
+                      <span
+                        className={`${style.title} ${
+                          checked ? style.checked : ''
+                        }`}
+                      >
+                        {title}
+                      </span>
+
+                      <button
+                        className={style.removeTodo}
+                        onClick={(event) => removeTodo(event, id)}
+                      >
+                        <img
+                          className={style.removeTodoIcon}
+                          src={Cross}
+                          alt="Remove todo"
+                        />
+                      </button>
+                    </li>
+                  )
+                }}
               </Draggable>
             ))}
 
