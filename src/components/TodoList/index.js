@@ -6,8 +6,6 @@ import Cross from 'url:../../assets/img/icon-cross.svg'
 import * as style from './index.module.scss'
 
 const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
-  if (!todos.length) return <p className={style.empty}>Empty list</p>
-
   const onDragEnd = useCallback((result) => {
     const { destination, source } = result
 
@@ -76,6 +74,8 @@ const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
   }, [todos, activeFilter])
 
   const filteredTodos = getFilteredTodos()
+
+  if (!filteredTodos.length) return <p className={style.empty}>Empty list</p>
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
