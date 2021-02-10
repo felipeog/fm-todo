@@ -94,14 +94,13 @@ const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
                 isDragDisabled={isDragDisabled}
               >
                 {(provided) => {
-                  console.log({ provided })
+                  delete provided.dragHandleProps.role
                   return (
                     <li
                       className={style.item}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      role=""
                     >
                       <Checkbox
                         isChecked={checked}
