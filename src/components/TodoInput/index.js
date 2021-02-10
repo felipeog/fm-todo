@@ -42,7 +42,9 @@ const TodoInput = ({ setTodos }) => {
         value={todoTitle}
         onChange={handleTitleChange}
         placeholder="Create a new todo..."
+        aria-label="Todo input"
       />
+      <input style={{ display: 'none' }} type="submit" value="Add todo" />
     </form>
   )
 }
