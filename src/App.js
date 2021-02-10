@@ -78,17 +78,17 @@ const App = () => {
         <Header />
         <TodoInput setTodos={setTodos} />
         <TodoList
-          todos={todos}
-          setTodos={setTodos}
           activeFilter={filter}
           isDragDisabled={isReorderDisabled}
+          setTodos={setTodos}
+          todos={todos}
         />
         <Actions
-          itemsLeft={itemsLeft}
           activeFilter={filter}
-          filterOptions={filterOptions}
-          setFilter={setFilter}
           clearCompleted={clearCompleted}
+          filterOptions={filterOptions}
+          itemsLeft={itemsLeft}
+          setFilter={setFilter}
         />
 
         {!isReorderDisabled && (

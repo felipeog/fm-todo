@@ -5,7 +5,7 @@ import Checkbox from '../Checkbox'
 import Cross from 'url:../../assets/img/icon-cross.svg'
 import * as style from './index.module.scss'
 
-const TodoList = ({ todos, setTodos, activeFilter, isDragDisabled }) => {
+const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
   if (!todos.length) return <p className={style.empty}>Empty list</p>
 
   const onDragEnd = useCallback((result) => {
@@ -16,6 +16,8 @@ const TodoList = ({ todos, setTodos, activeFilter, isDragDisabled }) => {
       (destination.droppableId === source.droppableId &&
         destination.index === source.index)
     ) {
+      // if dragged outside droppable
+      // or dragged to the same slot
       return
     }
 
@@ -28,7 +30,7 @@ const TodoList = ({ todos, setTodos, activeFilter, isDragDisabled }) => {
     })
   }, [])
 
-  const toggleTodoCheck = (event, id) => {
+  const toggleTodoCheck = useCallback((event, id) => {
     event.preventDefault()
 
     setTodos((todos) => {
@@ -43,9 +45,9 @@ const TodoList = ({ todos, setTodos, activeFilter, isDragDisabled }) => {
 
       return items
     })
-  }
+  }, [])
 
-  const removeTodo = (event, id) => {
+  const removeTodo = useCallback((event, id) => {
     event.preventDefault()
 
     setTodos((todos) => {
@@ -55,9 +57,9 @@ const TodoList = ({ todos, setTodos, activeFilter, isDragDisabled }) => {
 
       return items
     })
-  }
+  }, [])
 
-  const getFilteredTodos = () => {
+  const getFilteredTodos = useCallback(() => {
     switch (activeFilter.value) {
       case 'all':
         return todos
@@ -71,7 +73,7 @@ const TodoList = ({ todos, setTodos, activeFilter, isDragDisabled }) => {
       default:
         throw new Error('App @ useEffect >>>>> Invalid filter value')
     }
-  }
+  }, [todos, activeFilter])
 
   const filteredTodos = getFilteredTodos()
 

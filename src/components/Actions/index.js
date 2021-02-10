@@ -3,11 +3,11 @@ import React from 'react'
 import * as style from './index.module.scss'
 
 const Actions = ({
-  itemsLeft,
   activeFilter,
-  filterOptions,
-  setFilter,
   clearCompleted,
+  filterOptions,
+  itemsLeft,
+  setFilter,
 }) => {
   const renderActionList = (className) => (
     <ul className={className}>

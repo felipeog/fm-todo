@@ -1,3 +1,4 @@
+// layout colors
 $bright-blue: hsl(220, 98%, 61%);
 $very-light-gray: hsl(0, 0%, 98%);
 $very-light-grayish-blue: hsl(236, 33%, 92%);
@@ -9,6 +10,7 @@ $dark-grayish-blue: hsl(234, 11%, 52%);
 $very-dark-grayish-blue: hsl(237, 14%, 26%);
 $very-dark-grayish-blue-hover: hsl(233, 14%, 35%);
 
+// define colors according to theme
 html[data-theme='light'] {
   --bg-color: hsl(236, 33%, 92%);
   --text-color: hsl(235, 21%, 11%);
@@ -31,6 +33,7 @@ html[data-theme='dark'] {
   --input-placeholder-color: hsl(234, 11%, 52%);
 }
 
+// colors
 $white: #fff;
 $bg-color: var(--bg-color);
 $text-color: var(--text-color);
@@ -53,7 +56,9 @@ $input-placeholder-color: var(--input-placeholder-color);
 $action-text-color: var(--input-placeholder-color);
 $action-text-active-color: $bright-blue;
 
+// typography
 $font-family: 'Josefin Sans', sans-serif;
 
+// units
 $border-radius: 0.2rem;
 $transition-duration: 200ms;

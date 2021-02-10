@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'preact/hooks'
+import React, { useState } from 'react'
 
 import Sun from 'url:../../assets/img/icon-sun.svg'
 import Moon from 'url:../../assets/img/icon-moon.svg'
