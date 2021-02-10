@@ -94,7 +94,10 @@ const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
                 isDragDisabled={isDragDisabled}
               >
                 {(provided) => {
-                  delete provided.dragHandleProps.role
+                  if (provided?.dragHandleProps?.role) {
+                    delete provided.dragHandleProps.role
+                  }
+
                   return (
                     <li
                       className={style.item}
