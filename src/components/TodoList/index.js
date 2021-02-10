@@ -5,8 +5,8 @@ import Checkbox from '../Checkbox'
 import Cross from 'url:../../assets/img/icon-cross.svg'
 import * as style from './index.module.scss'
 
-const TodoList = ({ filteredTodos, setTodos, isDragDisabled }) => {
-  if (!filteredTodos.length) return <p className={style.empty}>Empty list</p>
+const TodoList = ({ todos, setTodos, activeFilter, isDragDisabled }) => {
+  if (!todos.length) return <p className={style.empty}>Empty list</p>
 
   const onDragEnd = useCallback((result) => {
     const { destination, source } = result
@@ -56,6 +56,24 @@ const TodoList = ({ filteredTodos, setTodos, isDragDisabled }) => {
       return items
     })
   }
+
+  const getFilteredTodos = () => {
+    switch (activeFilter.value) {
+      case 'all':
+        return todos
+
+      case 'active':
+        return todos.filter(({ checked }) => !checked)
+
+      case 'completed':
+        return todos.filter(({ checked }) => checked)
+
+      default:
+        throw new Error('App @ useEffect >>>>> Invalid filter value')
+    }
+  }
+
+  const filteredTodos = getFilteredTodos()
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>

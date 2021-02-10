@@ -16,7 +16,6 @@ const defaultFilter = filterOptions[0]
 
 const App = () => {
   const [todos, setTodos] = useState([])
-  const [filteredTodos, setFilteredTodos] = useState(todos)
   const [filter, setFilter] = useState(defaultFilter)
 
   useEffect(() => {
@@ -64,25 +63,7 @@ const App = () => {
   useEffect(() => {
     // save todos in local storage
     localStorage.setItem(LSKey, JSON.stringify(todos))
-
-    // filter todos
-    switch (filter.value) {
-      case 'all':
-        setFilteredTodos(todos)
-        break
-
-      case 'active':
-        setFilteredTodos(todos.filter(({ checked }) => !checked))
-        break
-
-      case 'completed':
-        setFilteredTodos(todos.filter(({ checked }) => checked))
-        break
-
-      default:
-        throw new Error('App @ useEffect >>>>> Invalid filter value')
-    }
-  }, [filter, todos])
+  }, [todos])
 
   const clearCompleted = () => {
     setTodos((todos) => todos.filter(({ checked }) => !checked))
@@ -97,8 +78,9 @@ const App = () => {
         <Header />
         <TodoInput setTodos={setTodos} />
         <TodoList
-          filteredTodos={filteredTodos}
+          todos={todos}
           setTodos={setTodos}
+          activeFilter={filter}
           isDragDisabled={isReorderDisabled}
         />
         <Actions
