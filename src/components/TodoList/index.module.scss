@@ -2,7 +2,8 @@
 
 .root {
   background-color: v.$list-bg-color;
-  border-radius: v.$border-radius;
+  border-top-left-radius: v.$border-radius;
+  border-top-right-radius: v.$border-radius;
 
   .removeTodo {
     cursor: pointer;
@@ -24,9 +25,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0 1rem;
     background-color: v.$item-bg-color;
     border-top: 0.1rem solid v.$item-border-color;
+    overflow: hidden;
 
     &:hover,
     &:focus,
@@ -44,7 +46,7 @@
   }
 
   .title {
-    margin-left: 1.4rem;
+    margin: 1rem 0 1rem 1.4rem;
     flex-grow: 1;
     line-height: 1.4;
 

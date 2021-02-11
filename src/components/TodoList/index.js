@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 import Checkbox from '../Checkbox'
@@ -86,55 +87,61 @@ const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {filteredTodos.map(({ title, id, checked }, index) => (
-              <Draggable
-                key={id}
-                draggableId={id}
-                index={index}
-                isDragDisabled={isDragDisabled}
-              >
-                {(provided) => {
-                  if (provided?.dragHandleProps?.role) {
-                    delete provided.dragHandleProps.role
-                  }
+            <AnimatePresence>
+              {filteredTodos.map(({ title, id, checked }, index) => (
+                <Draggable
+                  key={id}
+                  draggableId={id}
+                  index={index}
+                  isDragDisabled={isDragDisabled}
+                >
+                  {(provided) => {
+                    if (provided?.dragHandleProps?.role) {
+                      delete provided.dragHandleProps.role
+                    }
 
-                  return (
-                    <li
-                      className={style.item}
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      <Checkbox
-                        isChecked={checked}
-                        onClick={(event) => toggleTodoCheck(event, id)}
-                      />
-
-                      <span
-                        className={`${style.title} ${
-                          checked ? style.checked : ''
-                        }`}
+                    return (
+                      <motion.li
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.1 }}
+                        className={style.item}
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
                       >
-                        {title}
-                      </span>
-
-                      <button
-                        className={style.removeTodo}
-                        onClick={(event) => removeTodo(event, id)}
-                      >
-                        <img
-                          className={style.removeTodoIcon}
-                          src={Cross}
-                          alt="Remove todo"
+                        <Checkbox
+                          isChecked={checked}
+                          onClick={(event) => toggleTodoCheck(event, id)}
                         />
-                      </button>
-                    </li>
-                  )
-                }}
-              </Draggable>
-            ))}
 
-            {provided.placeholder}
+                        <span
+                          className={`${style.title} ${
+                            checked ? style.checked : ''
+                          }`}
+                        >
+                          {title}
+                        </span>
+
+                        <button
+                          className={style.removeTodo}
+                          onClick={(event) => removeTodo(event, id)}
+                        >
+                          <img
+                            className={style.removeTodoIcon}
+                            src={Cross}
+                            alt="Remove todo"
+                          />
+                        </button>
+                      </motion.li>
+                    )
+                  }}
+                </Draggable>
+              ))}
+
+              {provided.placeholder}
+            </AnimatePresence>
           </ul>
         )}
       </Droppable>
