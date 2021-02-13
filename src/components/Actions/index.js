@@ -1,30 +1,37 @@
 import React from 'react'
 
+import { useTodoContext } from '../../contexts/TodoContext'
 import * as style from './index.module.scss'
 
-const Actions = ({
-  activeFilter,
-  clearCompleted,
-  filterOptions,
-  itemsLeft,
-  setFilter,
-}) => {
+const Actions = ({}) => {
+  // contexts
+  const {
+    todos,
+    clearCompleted,
+    filter,
+    filterOptions,
+    setFilter,
+  } = useTodoContext()
+
+  // rendering
   const renderActionList = (className) => (
     <ul className={className}>
-      {filterOptions.map((filter) => (
-        <li className={style.actionItem} key={filter.value}>
+      {filterOptions.map((filterOption) => (
+        <li className={style.actionItem} key={filterOption.value}>
           <button
             className={`${style.actionButton} ${
-              activeFilter.value === filter.value ? style.active : ''
+              filter.value === filterOption.value ? style.active : ''
             }`}
-            onClick={() => setFilter(filter)}
+            onClick={() => setFilter(filterOption)}
           >
-            {filter.label}
+            {filterOption.label}
           </button>
         </li>
       ))}
     </ul>
   )
+
+  const itemsLeft = todos.filter(({ checked }) => !checked).length
 
   return (
     <footer className={`Actions ${style.root}`}>

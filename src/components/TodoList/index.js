@@ -7,7 +7,7 @@ import Cross from 'url:../../assets/img/icon-cross.svg'
 import { useTodoContext } from '../../contexts/TodoContext'
 import * as style from './index.module.scss'
 
-const TodoList = ({ activeFilter, isDragDisabled, setTodos, todos }) => {
+const TodoList = ({ activeFilter, isDragDisabled, todos }) => {
   // contexts
   const { removeTodo, toggleTodo, reorderTodo } = useTodoContext()
 

@@ -59,6 +59,9 @@ export const TodoProvider = (props) => {
       return items
     })
   }
+  const clearCompleted = () => {
+    setTodos((todos) => todos.filter(({ checked }) => !checked))
+  }
 
   // effects
   useEffect(() => {
@@ -118,6 +121,7 @@ export const TodoProvider = (props) => {
         removeTodo,
         toggleTodo,
         reorderTodo,
+        clearCompleted,
         setTodos,
         filter,
         filterOptions,

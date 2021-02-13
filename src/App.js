@@ -9,15 +9,9 @@ import * as style from './App.module.scss'
 
 const App = () => {
   // contexts
-  const { todos, setTodos, filter, filterOptions, setFilter } = useTodoContext()
-
-  // functions
-  const clearCompleted = () => {
-    setTodos((todos) => todos.filter(({ checked }) => !checked))
-  }
+  const { todos, filter } = useTodoContext()
 
   // rendering
-  const itemsLeft = todos.filter(({ checked }) => !checked).length
   const isReorderDisabled = filter.value !== 'all'
 
   return (
@@ -28,16 +22,9 @@ const App = () => {
         <TodoList
           activeFilter={filter}
           isDragDisabled={isReorderDisabled}
-          setTodos={setTodos}
           todos={todos}
         />
-        <Actions
-          activeFilter={filter}
-          clearCompleted={clearCompleted}
-          filterOptions={filterOptions}
-          itemsLeft={itemsLeft}
-          setFilter={setFilter}
-        />
+        <Actions />
 
         {!isReorderDisabled && (
           <p className={style.message}>Drag and drop to reorder list</p>
