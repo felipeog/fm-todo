@@ -12,6 +12,7 @@ const Actions = () => {
     filterOptions,
     setFilter,
     isReorderDisabled,
+    itemsLeft,
   } = useTodoContext()
 
   // rendering
@@ -31,8 +32,6 @@ const Actions = () => {
       ))}
     </ul>
   )
-
-  const itemsLeft = todos.filter(({ checked }) => !checked).length
 
   return (
     <footer className={`Actions ${style.root}`}>

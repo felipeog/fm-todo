@@ -79,6 +79,9 @@ export const TodoProvider = (props) => {
         )
     }
   }
+  const getItemsLeft = () => {
+    return todos.filter(({ checked }) => !checked).length
+  }
 
   // effects
   useEffect(() => {
@@ -126,6 +129,12 @@ export const TodoProvider = (props) => {
   useEffect(() => {
     // save todos in local storage
     localStorage.setItem(LSKey, JSON.stringify(todos))
+
+    // set document title
+    const itemsLeft = getItemsLeft()
+    document.title = `Todo - ${itemsLeft} item${
+      itemsLeft !== 1 ? 's' : ''
+    } left`
   }, [todos])
 
   // rendering
@@ -139,6 +148,7 @@ export const TodoProvider = (props) => {
         toggleTodo,
         reorderTodo,
         clearCompleted,
+        itemsLeft: getItemsLeft(),
         filter,
         filterOptions,
         setFilter,
