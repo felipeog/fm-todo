@@ -27,6 +27,38 @@ export const TodoProvider = (props) => {
       },
     ])
   }
+  const removeTodo = ({ id }) => {
+    setTodos((todos) => {
+      const items = Array.from(todos)
+      const itemIndex = todos.findIndex((todo) => todo.id === id)
+      items.splice(itemIndex, 1)
+
+      return items
+    })
+  }
+  const toggleTodo = ({ id }) => {
+    setTodos((todos) => {
+      const items = Array.from(todos)
+      const itemIndex = todos.findIndex((todo) => todo.id === id)
+      const [itemToToggle] = items.splice(itemIndex, 1)
+      const toggledItem = {
+        ...itemToToggle,
+        checked: !itemToToggle.checked,
+      }
+      items.splice(itemIndex, 0, toggledItem)
+
+      return items
+    })
+  }
+  const reorderTodo = ({ destination, source }) => {
+    setTodos((todos) => {
+      const items = Array.from(todos)
+      const [reorderedItem] = items.splice(source.index, 1)
+      items.splice(destination.index, 0, reorderedItem)
+
+      return items
+    })
+  }
 
   // effects
   useEffect(() => {
@@ -83,6 +115,9 @@ export const TodoProvider = (props) => {
       value={{
         todos,
         addTodo,
+        removeTodo,
+        toggleTodo,
+        reorderTodo,
         setTodos,
         filter,
         filterOptions,
