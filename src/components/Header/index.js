@@ -4,14 +4,17 @@ import Sun from 'url:../../assets/img/icon-sun.svg'
 import Moon from 'url:../../assets/img/icon-moon.svg'
 import * as style from './index.module.scss'
 
-const themes = {
-  dark: 'dark',
-  light: 'light',
-}
-
 const Header = () => {
+  // consts
+  const themes = {
+    dark: 'dark',
+    light: 'light',
+  }
+
+  // state
   const [theme, setTheme] = useState(themes.dark)
 
+  // functions
   const toggleTheme = () => {
     setTheme((currentTheme) => {
       const nextTheme =
@@ -23,6 +26,7 @@ const Header = () => {
     })
   }
 
+  // rendering
   return (
     <header className={`AppHeader ${style.root}`}>
       <h1 className={style.title}>Todo</h1>

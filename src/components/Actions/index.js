@@ -3,7 +3,7 @@ import React from 'react'
 import { useTodoContext } from '../../contexts/TodoContext'
 import * as style from './index.module.scss'
 
-const Actions = ({}) => {
+const Actions = () => {
   // contexts
   const {
     todos,

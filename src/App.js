@@ -6,18 +6,15 @@ import TodoList from './components/TodoList'
 import Actions from './components/Actions'
 import * as style from './App.module.scss'
 
-const App = () => {
-  // rendering
-  return (
-    <main className={`App ${style.root}`}>
-      <div className={style.container}>
-        <Header />
-        <TodoInput />
-        <TodoList />
-        <Actions />
-      </div>
-    </main>
-  )
-}
+const App = () => (
+  <main className={`App ${style.root}`}>
+    <div className={style.container}>
+      <Header />
+      <TodoInput />
+      <TodoList />
+      <Actions />
+    </div>
+  </main>
+)
 
 export default App
