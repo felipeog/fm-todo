@@ -1,40 +1,35 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 
 import Checkbox from '../Checkbox'
+import { useTodoContext } from '../../contexts/TodoContext'
 import * as style from './index.module.scss'
 
-const TodoInput = ({ setTodos }) => {
+const TodoInput = () => {
+  // contexts
+  const { addTodo } = useTodoContext()
+
+  // state
   const [isChecked, setIsChecked] = useState(false)
   const [todoTitle, setTodoTitle] = useState('')
 
+  // functions
   const toggleIsChecked = () => {
     setIsChecked((isChecked) => !isChecked)
   }
-
   const handleTitleChange = (event) => {
     setTodoTitle(event.target.value)
   }
+  const handleTodoSubmit = (event) => {
+    event.preventDefault()
 
-  const addTodo = useCallback(
-    (event) => {
-      event.preventDefault()
+    addTodo({ title: todoTitle, checked: isChecked })
+    setIsChecked(false)
+    setTodoTitle('')
+  }
 
-      setTodos((todos) => [
-        ...todos,
-        {
-          title: todoTitle,
-          checked: isChecked,
-          id: `draggable-${Math.round(Math.random() * 999_999)}`,
-        },
-      ])
-      setIsChecked(false)
-      setTodoTitle('')
-    },
-    [isChecked, todoTitle],
-  )
-
+  // rendering
   return (
-    <form className={`TodoInput ${style.root}`} onSubmit={addTodo}>
+    <form className={`TodoInput ${style.root}`} onSubmit={handleTodoSubmit}>
       <Checkbox isChecked={isChecked} onClick={toggleIsChecked} />
       <input
         className={style.input}

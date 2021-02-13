@@ -59,6 +59,13 @@
   .actionButton.active {
     color: v.$action-text-active-color;
   }
+
+  .message {
+    margin-top: 4rem;
+    font-size: 0.8rem;
+    text-align: center;
+    color: v.$dark-grayish-blue;
+  }
 }
 
 @media screen and (max-width: 899px) {
