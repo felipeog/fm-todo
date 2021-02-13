@@ -11,6 +11,7 @@ const Actions = ({}) => {
     filter,
     filterOptions,
     setFilter,
+    isReorderDisabled,
   } = useTodoContext()
 
   // rendering
@@ -50,6 +51,10 @@ const Actions = ({}) => {
       <div className={style.bottom}>
         {renderActionList(style.actionsListMobile)}
       </div>
+
+      {!isReorderDisabled && (
+        <p className={style.message}>Drag and drop to reorder list</p>
+      )}
     </footer>
   )
 }

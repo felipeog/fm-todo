@@ -7,9 +7,15 @@ import Cross from 'url:../../assets/img/icon-cross.svg'
 import { useTodoContext } from '../../contexts/TodoContext'
 import * as style from './index.module.scss'
 
-const TodoList = ({ activeFilter, isDragDisabled, todos }) => {
+const TodoList = () => {
   // contexts
-  const { removeTodo, toggleTodo, reorderTodo } = useTodoContext()
+  const {
+    filteredTodos,
+    removeTodo,
+    toggleTodo,
+    reorderTodo,
+    isReorderDisabled,
+  } = useTodoContext()
 
   // functions
   const onDragEnd = useCallback((result) => {
@@ -27,34 +33,8 @@ const TodoList = ({ activeFilter, isDragDisabled, todos }) => {
 
     reorderTodo({ destination, source })
   }, [])
-  const handleTodoRemove = ({ event, id }) => {
-    event.preventDefault()
-    removeTodo({ id })
-  }
-  const handleTodoToggle = ({ event, id }) => {
-    event.preventDefault()
-    toggleTodo({ id })
-  }
-
-  const getFilteredTodos = useCallback(() => {
-    switch (activeFilter.value) {
-      case 'all':
-        return todos
-
-      case 'active':
-        return todos.filter(({ checked }) => !checked)
-
-      case 'completed':
-        return todos.filter(({ checked }) => checked)
-
-      default:
-        throw new Error('App @ useEffect >>>>> Invalid filter value')
-    }
-  }, [todos, activeFilter])
 
   // rendering
-  const filteredTodos = getFilteredTodos()
-
   if (!filteredTodos.length) return <p className={style.empty}>Empty list</p>
 
   return (
@@ -72,7 +52,7 @@ const TodoList = ({ activeFilter, isDragDisabled, todos }) => {
                   key={id}
                   draggableId={id}
                   index={index}
-                  isDragDisabled={isDragDisabled}
+                  isDragDisabled={isReorderDisabled}
                 >
                   {(provided) => {
                     if (provided?.dragHandleProps?.role) {
@@ -92,7 +72,7 @@ const TodoList = ({ activeFilter, isDragDisabled, todos }) => {
                       >
                         <Checkbox
                           isChecked={checked}
-                          onClick={(event) => handleTodoToggle({ event, id })}
+                          onClick={() => toggleTodo({ id })}
                         />
 
                         <span
@@ -105,7 +85,7 @@ const TodoList = ({ activeFilter, isDragDisabled, todos }) => {
 
                         <button
                           className={style.removeTodo}
-                          onClick={(event) => handleTodoRemove({ event, id })}
+                          onClick={() => removeTodo({ id })}
                         >
                           <img
                             className={style.removeTodoIcon}

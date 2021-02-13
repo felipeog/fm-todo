@@ -62,6 +62,23 @@ export const TodoProvider = (props) => {
   const clearCompleted = () => {
     setTodos((todos) => todos.filter(({ checked }) => !checked))
   }
+  const getFilteredTodos = () => {
+    switch (filter.value) {
+      case 'all':
+        return todos
+
+      case 'active':
+        return todos.filter(({ checked }) => !checked)
+
+      case 'completed':
+        return todos.filter(({ checked }) => checked)
+
+      default:
+        throw new Error(
+          'TodoProvider @ getFilteredTodos >>>>> Invalid filter value',
+        )
+    }
+  }
 
   // effects
   useEffect(() => {
@@ -122,10 +139,11 @@ export const TodoProvider = (props) => {
         toggleTodo,
         reorderTodo,
         clearCompleted,
-        setTodos,
         filter,
         filterOptions,
         setFilter,
+        filteredTodos: getFilteredTodos(),
+        isReorderDisabled: filter.value !== 'all',
       }}
     />
   )
